@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/dayFargment">
+
+    <fragment
+        android:id="@+id/dayFargment"
+        android:name="com.example.mvvm_todo_di.Days.Fragment.DayFargment"
+        tools:layout="@layout/day_fragment"
+        android:label="DayFargment" >
+        <action
+            android:id="@+id/action_dayFargment_to_tasksFragment"
+            app:destination="@id/tasksFragment" />
+        <action
+            android:id="@+id/action_dayFargment_to_addDayFragment"
+            app:destination="@id/addDayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/tasksFragment"
+        tools:layout="@layout/detail_fragment"
+        android:name="com.example.mvvm_todo_di.Tasks.Fragment.TasksFragment"
+        android:label="TasksFragment" >
+        <action
+            android:id="@+id/action_tasksFragment_to_dayFargment"
+            app:destination="@id/dayFargment" />
+        <argument android:name="days"
+            app:argType="com.example.mvvm_todo_di.Model.Days"
+            app:nullable="true"
+            android:defaultValue="@null" />
+    </fragment>
+    <fragment
+        android:id="@+id/addDayFragment"
+        tools:layout="@layout/add_day"
+        android:name="com.example.mvvm_todo_di.Days.Fragment.AddDayFragment"
+        android:label="AddDayFragment" >
+        <action
+            android:id="@+id/action_addDayFragment_to_dayFargment"
+            app:destination="@id/dayFargment" />
+    </fragment>
+</navigation>
